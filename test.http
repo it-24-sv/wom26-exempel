@@ -1,0 +1,16 @@
+@API_URL = https://fw-teaching.fi/demo/wdbocms/api/v1
+
+### Get all products
+GET {{API_URL}}/products/
+
+### Get one product
+GET {{API_URL}}/products/1001
+
+### Create new product
+POST {{API_URL}}/products/
+Content-Type: application/json
+
+{
+  "name": "Shoes",
+  "price": 45
+}
