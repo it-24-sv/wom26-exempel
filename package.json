@@ -1,0 +1,27 @@
+{
+  "name": "wom26-exempel",
+  "version": "1.0.0",
+  "description": "Varje lektion finns som en egen Branch.",
+  "homepage": "https://github.com/it-24-sv/wom26-exempel#readme",
+  "bugs": {
+    "url": "https://github.com/it-24-sv/wom26-exempel/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/it-24-sv/wom26-exempel.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
