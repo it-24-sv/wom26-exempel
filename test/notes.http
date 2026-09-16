@@ -8,7 +8,7 @@ POST {{API_URL}}/notes
 Content-Type: application/json
 
 {
-    "note": "POST funkar!"
+   "note": "POST funkar!"
 }
 
 ### Uppdatera note
