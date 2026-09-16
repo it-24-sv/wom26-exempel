@@ -1,11 +1,14 @@
 const express = require('express')
 const router = express.Router()
-const { PrismaClient } = require('@prisma/client')
+const { PrismaClient } = require('@prisma/client')  // object destructuring
 
 const prisma = new PrismaClient()
 
-router.get('/', (req, res) => {
-    res.send("...")
+router.get('/', async (req, res) => {
+    const notes = await prisma.notes.findMany({
+        orderBy: { id: 'asc' }
+    })
+    res.send(notes)
 })
 
 router.post('/', async (req, res) => {
@@ -13,7 +16,7 @@ router.post('/', async (req, res) => {
     
     const note = await prisma.notes.create({
         data: { 
-            author_id: 1, 
+            author_id: 1, // from JWT later
             note: req.body.note 
         }
     })
@@ -24,27 +27,32 @@ router.post('/', async (req, res) => {
     })
 })
 
-/*
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
     console.log(`PATCH ${req.params.id}`)
-    // TEMP, ersätts med DB
-    tempData[req.params.id-1] = req.body
+
+    const note = await prisma.notes.update({
+        data: { note: req.body.note, updated_at: new Date() },
+        where: { id: Number(req.params.id) }
+    })
+
     res.send({
         msg: "Note updated", 
-        id: req.params.id,
-        newNote: tempData[req.params.id-1]
+        id: note.id,
+        updatedNote: note
     })
 })
 
-router.delete('/:id', (req, res) => {
-    // TEMP, ersätts med DB
-    tempData.splice(req.params.id-1)
+router.delete('/:id', async (req, res) => {
+
+    const note = await prisma.notes.delete({
+        where: { id: Number(req.params.id) }
+    })
 
     res.send({
         msg: "Note deleted", 
-        id: req.params.id
+        id: note.id
     })
 })
-*/
+
 
 module.exports = router

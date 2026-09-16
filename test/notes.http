@@ -16,8 +16,8 @@ PUT {{API_URL}}/notes/2
 Content-Type: application/json
 
 {
-    "text": "Ny text!!"
+    "note": "Ny text!!"
 }
 
 ### Uppdatera note
-DELETE {{API_URL}}/notes/2
+DELETE {{API_URL}}/notes/4
