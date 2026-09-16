@@ -1,26 +1,30 @@
 const express = require('express')
 const router = express.Router()
+const { PrismaClient } = require('@prisma/client')
 
-// Temporär "databas", ersätts senare med riktig DB
-const tempData = [
-    { "text": "Hello" },
-    { "text": "morjens" }
-]
+const prisma = new PrismaClient()
 
 router.get('/', (req, res) => {
-    res.send(tempData)
+    res.send("...")
 })
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     console.log(req.body)
-    // TEMP, ersätts med DB
-    tempData.push(req.body)
+    
+    const note = await prisma.notes.create({
+        data: { 
+            author_id: 1, 
+            note: req.body.note 
+        }
+    })
+    
     res.send({
         msg: "Note created", 
-        id: tempData.length
+        id: note.id
     })
 })
 
+/*
 router.put('/:id', (req, res) => {
     console.log(`PATCH ${req.params.id}`)
     // TEMP, ersätts med DB
@@ -41,5 +45,6 @@ router.delete('/:id', (req, res) => {
         id: req.params.id
     })
 })
+*/
 
 module.exports = router
