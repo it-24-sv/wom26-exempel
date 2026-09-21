@@ -1,8 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const { PrismaClient } = require('@prisma/client')  // object destructuring
+const authorize = require('../middleware/authorize')
 
 const prisma = new PrismaClient()
+
+router.use(authorize)
 
 router.get('/', async (req, res) => {
     const notes = await prisma.notes.findMany({
@@ -10,6 +13,14 @@ router.get('/', async (req, res) => {
     })
     res.send(notes)
 })
+
+router.get('/:id', async (req, res) => {
+    const note = await prisma.notes.findUnique({
+        where: { id: Number(req.params.id) }
+    })
+    res.send(note)
+})
+
 
 router.post('/', async (req, res) => {
     console.log(req.body)

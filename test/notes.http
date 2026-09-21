@@ -1,7 +1,15 @@
 # Rest-client stöder .env
 #@API_URL = {{$dotenv PRODUCTION_API}}
-@API_URL = http://localhost:3000
+@API_URL = http://localhost:3001
+
+@TEMP_TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IkZyZWRkZSIsImlhdCI6MTUxNjIzOTAyMn0.WZRT1PGMoum1Rsk4JRMjf4w0WnTGwFvfXFn70YuEAsw
+
+
 GET {{API_URL}}/notes
+
+### GET single note
+GET {{API_URL}}/notes/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IkZyZWRkZSIsImlhdCI6MTUxNjIzOTAyMn0.WZRT1PGMoum1Rsk4JRMjf4w0WnTGwFvfXFn70YuEAsw
 
 ### Skapa ny note
 POST {{API_URL}}/notes
