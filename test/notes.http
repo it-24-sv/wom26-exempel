@@ -3,8 +3,6 @@
 @API_URL = http://localhost:3001
 
 @DEV_TOKEN = {{$dotenv DEV_TOKEN}} 
-#@DEV_TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IkZyZWRkZSIsImlhdCI6MTUxNjIzOTAyMn0.LlnsHYnyjGSzL9SiZXxTnhdoJgPWIl-J9EPM3Dp8jO0
-
 
 GET {{API_URL}}/notes
 
