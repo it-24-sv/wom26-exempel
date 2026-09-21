@@ -16,8 +16,13 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const note = await prisma.notes.findUnique({
-        where: { id: Number(req.params.id) }
+        where: { 
+            id: Number(req.params.id),
+            author_id: Number(req.authUser.sub)
+        }
     })
+    if (!note) res.status(404).send({msg: "Note not found"})
+
     res.send(note)
 })
 
@@ -27,7 +32,7 @@ router.post('/', async (req, res) => {
     
     const note = await prisma.notes.create({
         data: { 
-            author_id: 1, // from JWT later
+            author_id: 2, // from JWT later
             note: req.body.note 
         }
     })

@@ -2,21 +2,24 @@
 #@API_URL = {{$dotenv PRODUCTION_API}}
 @API_URL = http://localhost:3001
 
-@TEMP_TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IkZyZWRkZSIsImlhdCI6MTUxNjIzOTAyMn0.WZRT1PGMoum1Rsk4JRMjf4w0WnTGwFvfXFn70YuEAsw
+@DEV_TOKEN = {{$dotenv DEV_TOKEN}} 
+#@DEV_TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IkZyZWRkZSIsImlhdCI6MTUxNjIzOTAyMn0.LlnsHYnyjGSzL9SiZXxTnhdoJgPWIl-J9EPM3Dp8jO0
 
 
 GET {{API_URL}}/notes
 
 ### GET single note
-GET {{API_URL}}/notes/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IkZyZWRkZSIsImlhdCI6MTUxNjIzOTAyMn0.WZRT1PGMoum1Rsk4JRMjf4w0WnTGwFvfXFn70YuEAsw
+GET {{API_URL}}/notes/7
+Authorization: Bearer {{DEV_TOKEN}}
 
 ### Skapa ny note
 POST {{API_URL}}/notes
 Content-Type: application/json
+Authorization: Bearer {{DEV_TOKEN}}
 
 {
-   "note": "POST funkar!"
+   "author_id": 2,
+    "note": "någon annans note"
 }
 
 ### Uppdatera note
