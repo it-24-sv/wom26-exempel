@@ -9,6 +9,7 @@ router.use(authorize)
 
 router.get('/', async (req, res) => {
     const notes = await prisma.notes.findMany({
+        where: { author_id: Number(req.authUser.sub)},
         orderBy: { id: 'asc' }
     })
     res.send(notes)
@@ -32,7 +33,7 @@ router.post('/', async (req, res) => {
     
     const note = await prisma.notes.create({
         data: { 
-            author_id: 2, // from JWT later
+            author_id: Number(req.authUser.sub), // from JWT
             note: req.body.note 
         }
     })

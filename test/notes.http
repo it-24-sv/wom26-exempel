@@ -16,7 +16,7 @@ Content-Type: application/json
 Authorization: Bearer {{DEV_TOKEN}}
 
 {
-   "author_id": 2,
+    "author_id": 2,
     "note": "någon annans note"
 }
 
