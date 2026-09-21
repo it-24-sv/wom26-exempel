@@ -15,6 +15,9 @@ app.get('/', (req, res) => {
 const notesRouter = require('./routes/notes')
 app.use('/notes', notesRouter)
 
+const usersRouter = require('./routes/users')
+app.use('/users', usersRouter)
+
 
 
 app.listen(PORT, () => {

@@ -1,0 +1,10 @@
+@API_URL = http://localhost:3001
+
+### Skapa ny note
+POST {{API_URL}}/users
+Content-Type: application/json
+
+{
+    "email": "john@doe.com",
+    "password": "Password123"
+}
