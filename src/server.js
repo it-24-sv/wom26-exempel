@@ -9,7 +9,7 @@ console.log(`Node.js ${process.version}`)
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.json({ msg: "Notes API", version: "0.6" })
+    res.json({ msg: "CORS test", version: "0.7" })
 })
 
 const notesRouter = require('./routes/notes')
