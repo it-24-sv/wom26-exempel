@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes frontend</title>
+</head>
+<body>
+    <h3>Notes</h3>
+
+    <div id="login" style="display: none;">
+        <input id="user" placeholder="user"><br>
+        <input id="password" placeholder="password">
+        <button type="button" id="btn-login">Login</button>
+
+    </div>
+
+    <ul id="notes-list"></ul>
+
+    <textarea id="new-note" placeholder="Note text..."></textarea>
+    <button type="button" id="btn-save" onclick="newNote()">Save</button>
+
+    <script>
+       
+        // quick and dirty...
+        if (!localStorage.getItem('notes-demo-token')) {
+            document.getElementById('login').style.display = 'block';
+                        
+            // skapa fetch med POST med login-formens user + password
+            // få tillbaka JWT, spara JWT i localStorage
+        
+            // TEMP: spara token manuellt
+            localStorage.setItem('notes-demo-token', prompt('Save JWT'));
+
+        }
+        TOKEN = localStorage.getItem('notes-demo-token');
+
+        API_URL="https://wom26-exempel-notes.onrender.com";
+
+        async function newNote() {
+
+            const note = document.getElementById('new-note').value;
+            console.log(note)
+            const resp = await fetch(`${API_URL}/notes`, {
+                method: 'POST',
+                headers: { 
+                    'Authorization': `Bearer ${TOKEN}`, 
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 
+                    note: note
+                })
+            });
+
+            console.log(await resp.json());
+
+            getAllNotes();
+
+        }
+
+        async function getAllNotes() {
+ 
+            const resp = await fetch(`${API_URL}/notes`, {
+                headers: { 'Authorization': `Bearer ${TOKEN}`}
+            });
+            const notes = await resp.json();
+
+            console.log(notes)
+
+            document.getElementById('notes-list').innerHTML = '';
+
+            for (note of notes) {
+                document.getElementById('notes-list').innerHTML += `
+                    <li>${note.note}</li>
+                `
+            }
+            
+            document.getElementById('login').style.display = 'none';
+
+
+        }
+
+
+
+        if (TOKEN) getAllNotes();
+    </script>
+
+    
+
+    
+</body>
+</html>

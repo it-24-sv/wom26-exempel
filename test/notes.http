@@ -1,13 +1,13 @@
 # Rest-client stöder .env
-#@API_URL = {{$dotenv PRODUCTION_API}}
-@API_URL = http://localhost:3001
+@API_URL = {{$dotenv PRODUCTION_API}}
+#@API_URL = http://localhost:3001
 
 @DEV_TOKEN = {{$dotenv DEV_TOKEN}} 
 
 GET {{API_URL}}/notes
 
 ### GET single note
-GET {{API_URL}}/notes/7
+GET {{API_URL}}/notes/9
 Authorization: Bearer {{DEV_TOKEN}}
 
 ### Skapa ny note
@@ -16,7 +16,6 @@ Content-Type: application/json
 Authorization: Bearer {{DEV_TOKEN}}
 
 {
-    "author_id": 2,
     "note": "någon annans note"
 }
 
