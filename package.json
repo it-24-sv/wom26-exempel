@@ -1,27 +1,24 @@
 {
-  "name": "electron-quick-start",
+  "name": "capacitor-demo",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
-  "main": "main.js",
+  "description": "",
+  "homepage": "https://github.com/it-24-sv/wom26-exempel#readme",
+  "bugs": {
+    "url": "https://github.com/it-24-sv/wom26-exempel/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/it-24-sv/wom26-exempel.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
   "scripts": {
-    "start": "electron .",
-    "dev": "nodemon --exec electron ."
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
   "dependencies": {
-    "dotenv": "^18.0.4",
-    "electron": "^44.5.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.14"
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/cli": "^8.5.2"
   }
 }
