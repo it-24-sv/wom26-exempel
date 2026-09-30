@@ -1,15 +1,26 @@
-# rahti2 node.js
+# electron-quick-start
 
-### For deployment to Rahti2
+## Modified by fw-teaching, original template here: https://github.com/electron/electron-quick-start
 
-Note: OpenShift wants the main branch to be named *master* by default, you have two options:
-1. Push to origin/master to deploy
-2. Change the setting in Openshift to *main*:    
-    Edit BuildConfig ==> Show advanced git options ==> Git reference: `main`
+**Clone and run for a quick way to see Electron in action.**
 
-### For local real-time development
+This is a minimal Electron application based on the [Quick Start Guide](https://electronjs.org/docs/latest/tutorial/quick-start) within the Electron documentation.
 
-Rename `.env-example` to `.env` to override the `MODE=production`set in the `Dockerfile`. Note that this needs a valueless declaration of `MODE` in `docker-compose.yml`
+A basic Electron application needs just these files:
 
-To run the container locally:
-`docker-compose up --build`
+- `package.json` - Points to the app's main file and lists its details and dependencies.
+- `main.js` - Starts the app and creates a browser window to render HTML. This is the app's **main process**.
+- `index.html` - A web page to render. This is the app's **renderer process**.
+- `preload.js` - A content script that runs before the renderer process loads.
+
+You can learn more about each of these components in depth within the [Tutorial](https://electronjs.org/docs/latest/tutorial/tutorial-prerequisites).
+
+
+## Resources for Learning Electron
+
+- [electronjs.org/docs](https://electronjs.org/docs) - all of Electron's documentation
+- [Electron Fiddle](https://electronjs.org/fiddle) - Electron Fiddle, an app to test small Electron experiments
+
+## License
+
+[CC0 1.0 (Public Domain)](LICENSE.md)
